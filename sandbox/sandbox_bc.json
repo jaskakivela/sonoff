@@ -25,7 +25,7 @@
         "source": {
             "git": {
                 "ref": "master",
-                "uri": "git@github.com:jaskakivela/sonoff.git",
+                "uri": "https://github.com/jaskakivela/sonoff.git",
                 "contextDir": "sandbox"
             },
             "type": "Git"
