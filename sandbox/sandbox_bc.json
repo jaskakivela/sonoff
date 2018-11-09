@@ -23,12 +23,12 @@
         "resources": {},
         "runPolicy": "Serial",
         "source": {
+            "type": "Git",
             "git": {
                 "ref": "master",
-                "uri": "https://github.com/jaskakivela/sonoff.git",
-                "contextDir": "sandbox"
+                "uri": "https://github.com/jaskakivela/sonoff.git"
             },
-            "type": "Git"
+            "contextDir": "sandbox"
         },
         "strategy": {
             "dockerStrategy": {
