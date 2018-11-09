@@ -1,0 +1,66 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "annotations": {
+        },
+        "labels": {
+            "app": "sandbox"
+        },
+        "name": "sandbox",
+        "namespace": "sonoff"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 2,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "sandbox:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "git": {
+                "ref": "master",
+                "uri": "git@github.com:jaskakivela/sonoff.git",
+                "contextDir": "sandbox"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "dockerStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "alpine:latest"
+                }
+            },
+            "type": "Docker"
+        },
+        "successfulBuildsHistoryLimit": 2,
+        "triggers": [
+            {
+                "github": {
+                    "secret": "A_Nb7ZCIQb_l99MNh_gP"
+                },
+                "type": "GitHub"
+            },
+            {
+                "generic": {
+                    "secret": "q4VDlXTluG9ebMfhwrsc"
+                },
+                "type": "Generic"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChange": {
+                },
+                "type": "ImageChange"
+            }
+        ]
+    }
+}
