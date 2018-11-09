@@ -10,7 +10,6 @@
     },
     "spec": {
         "host": "sonoff-server.kivela.net",
-        "externalIPs": [ "192.168.0.16" ],
         "port": {
             "targetPort": "http"
         },

@@ -9,6 +9,8 @@
         "namespace": "sonoff"
     },
     "spec": {
+        "clusterIP": "172.30.35.186",
+        "externalIPs": [ "192.168.0.16" ],
         "ports": [
             {
                 "name": "http",
