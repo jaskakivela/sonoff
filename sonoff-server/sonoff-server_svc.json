@@ -3,7 +3,7 @@
     "kind": "Service",
     "metadata": {
         "labels": {
-            "app": "sandbox"
+            "app": "sonoff-server"
         },
         "name": "sonoff-server",
         "namespace": "sonoff"
@@ -13,20 +13,20 @@
         "externalIPs": [ "192.168.0.16" ],
         "ports": [
             {
-                "name": "http",
-                "port": 8080,
+                "name": "https",
+                "port": 8442,
                 "protocol": "TCP",
-                "targetPort": 8080
+                "targetPort": 8442
             },
             {
-                "name": "https",
+                "name": "wsocks",
                 "port": 8443,
                 "protocol": "TCP",
                 "targetPort": 8443
             }
         ],
         "selector": {
-            "deploymentconfig": "sandbox"
+            "deploymentconfig": "sonoff-server"
         },
         "sessionAffinity": "None",
         "type": "ClusterIP"

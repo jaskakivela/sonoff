@@ -11,7 +11,7 @@
     "spec": {
         "host": "sonoff-server.kivela.net",
         "port": {
-            "targetPort": "http"
+            "targetPort": "https"
         },
         "to": {
             "kind": "Service",
