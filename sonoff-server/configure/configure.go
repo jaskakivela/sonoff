@@ -17,13 +17,14 @@ func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+    time.Sleep(5 * time.Minute)
+
     http.HandleFunc("/dispatch/device", SonoffConfigServer)
     port := os.Getenv("PORT")
     if len(port) == 0 {
         port = "8442"
     }
 
-    time.Sleep(6000)
 
     // err := http.ListenAndServeTLS(":"+port, "certificate.pem", "key.pem", nil)
     // if err != nil {
