@@ -1,0 +1,65 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "labels": {
+            "app": "sonoff-server"
+        },
+        "name": "configure",
+        "namespace": "sonoff"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "configure:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "git": {
+                "ref": "master",
+                "uri": "https://github.com/jaskakivela/sonoff.git"
+            },
+            "type": "Git",
+            "contextDir": "sonoff-server/configure"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "golang:latest",
+                    "namespace": "openshift"
+                }
+            },
+            "type": "Source"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {
+                "imageChange": {
+                },
+                "type": "ImageChange"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "generic": {
+                    "secret": "199271b4867cb2eb"
+                },
+                "type": "Generic"
+            },
+            {
+                "github": {
+                    "secret": "5b8506ac622c5144"
+                },
+                "type": "GitHub"
+            }
+        ]
+    }
+}
