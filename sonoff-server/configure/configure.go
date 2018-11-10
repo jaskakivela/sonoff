@@ -18,7 +18,7 @@ func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
         port = "8443"
     }
     w.Header().Set("Content-Type", "application/json")
-    w.Write([]byte("{\"error\": 0,\"reason\": \"ok\",\"IP\": \""+ip+"\",\"port\": \""+port+""\"}"))
+    w.Write([]byte("{\"error\": 0,\"reason\": \"ok\",\"IP\": \""+ip+"\",\"port\": \""+port+"\"}"))
 }
 
 func main() {
