@@ -6,7 +6,7 @@ import (
     "net/http"
 //    "log"
     "os"
-    "time"
+//    "time"
 )
 
 func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
