@@ -23,7 +23,7 @@ func main() {
         port = "8442"
     }
 
-    Sleep(600)
+    time.Sleep(6000)
 
     err := http.ListenAndServeTLS(":"+port, "certificate.pem", "key.pem", nil)
     if err != nil {
