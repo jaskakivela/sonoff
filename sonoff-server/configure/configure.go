@@ -1,25 +1,30 @@
 package main
 
 import (
-//    "fmt"
-//    "io"
     "net/http"
     "log"
     "os"
-//    "time"
 )
 
 func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
+
+    ip := os.Getenv("EXTERNALIP")
+    if len(ip) == 0 {
+        ip = "192.168.0.16"
+    }
+    
+    port := os.Getenv("SERVERPORT")
+    if len(port) == 0 {
+        port = "8443"
+    }
     w.Header().Set("Content-Type", "application/json")
-    w.Write([]byte("{\"error\": 0,\"reason\": \"ok\",\"IP\": \"192.168.0.16\",\"port\": \"8443\"}"))
-    // fmt.Fprintf(w, "This is an example server.\n")
-    // io.WriteString(w, "This is an example server.\n")
+    w.Write([]byte("{\"error\": 0,\"reason\": \"ok\",\"IP\": \""+ip+"\",\"port\": \""+port+""\"}"))
 }
 
 func main() {
 
     http.HandleFunc("/dispatch/device", SonoffConfigServer)
-    port := os.Getenv("PORT")
+    port := os.Getenv("CONFPORT")
     if len(port) == 0 {
         port = "8442"
     }
