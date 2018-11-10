@@ -6,6 +6,7 @@ import (
     "net/http"
     "log"
     "os"
+    "time"
 )
 
 func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
@@ -21,6 +22,8 @@ func main() {
     if len(port) == 0 {
         port = "8442"
     }
+
+    Sleep(600)
 
     err := http.ListenAndServeTLS(":"+port, "certificate.pem", "key.pem", nil)
     if err != nil {
