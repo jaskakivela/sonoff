@@ -17,7 +17,6 @@ func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-    time.Sleep(5 * time.Minute)
 
     http.HandleFunc("/dispatch/device", SonoffConfigServer)
     port := os.Getenv("PORT")
@@ -26,8 +25,8 @@ func main() {
     }
 
 
-    // err := http.ListenAndServeTLS(":"+port, "certificate.pem", "key.pem", nil)
-    // if err != nil {
-    //     log.Fatal("ListenAndServe: ", err)
-    // }
+    err := http.ListenAndServeTLS(":"+port, "/certificate.pem/sslcert", "/key.pem/sslkey", nil)
+    if err != nil {
+        log.Fatal("ListenAndServe: ", err)
+    }
 }

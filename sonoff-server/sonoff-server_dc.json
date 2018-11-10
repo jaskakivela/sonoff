@@ -43,7 +43,35 @@
                         "name": "configure",
                         "resources": {},
                         "terminationMessagePath": "/dev/termination-log",
-                        "terminationMessagePolicy": "File"
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/key.pem",
+                                "name": "sslkey",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/certificate.pem",
+                                "name": "sslcert",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "sslcert",
+                        "secret": {
+                            "defaultMode": "420",
+                            "secretName": "sslcert"
+                        }
+                    },
+                    {
+                        "name": "sslkey",
+                        "secret": {
+                            "defaultMode": "420",
+                            "secretName": "sslkey"
+                        }
                     }
                 ],
                 "dnsPolicy": "ClusterFirst",
