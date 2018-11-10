@@ -10,7 +10,7 @@ import (
 
 func SonoffConfigServer(w http.ResponseWriter, req *http.Request) {
     w.Header().Set("Content-Type", "application/json")
-    w.Write([]byte('{"error": 0,"reason": "ok","IP": "192.168.0.16","port": "8443"}'))
+    w.Write([]byte("{\"error\": 0,\"reason\": \"ok\",\"IP\": \"192.168.0.16\",\"port\": \"8443\"}"))
     // fmt.Fprintf(w, "This is an example server.\n")
     // io.WriteString(w, "This is an example server.\n")
 }
