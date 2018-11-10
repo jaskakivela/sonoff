@@ -22,7 +22,7 @@ func main() {
         port = "8442"
     }
 
-    err := http.ListenAndServeTLS(":"+port, "server.crt", "server.key", nil)
+    err := http.ListenAndServeTLS(":"+port, "certificate.pem", "key.pem", nil)
     if err != nil {
         log.Fatal("ListenAndServe: ", err)
     }
