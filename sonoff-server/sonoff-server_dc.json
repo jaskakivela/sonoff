@@ -9,7 +9,7 @@
         "namespace": "sonoff"
     },
     "spec": {
-        "replicas": 1,
+        "replicas": 2,
         "revisionHistoryLimit": 5,
         "selector": {
             "app": "sonoff-server",
@@ -37,6 +37,26 @@
             },
             "spec": {
                 "containers": [
+                    {
+                        "image": "server:latest",
+                        "imagePullPolicy": "Always",
+                        "name": "server",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/key.pem",
+                                "name": "sslkey",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/certificate.pem",
+                                "name": "sslcert",
+                                "readOnly": true
+                            }
+                        ]
+                    },
                     {
                         "image": "configure:latest",
                         "imagePullPolicy": "Always",
@@ -99,7 +119,22 @@
                     }
                 },
                 "type": "ImageChange"
+            },
+            {
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "server"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "name": "server:latest",
+                        "namespace": "sonoff"
+                    }
+                },
+                "type": "ImageChange"
             }
+        
         ]
     }
 }
